@@ -9,19 +9,11 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    // private $posts = [
-    //     1 =>[
-    //         'title' => 'Intro to Laravl',
-    //         'content' => 'This is a short ntro to Larave',
-    //         'is_new' => true,
-    //         'has_comments' => true
-    //     ],
-    //     2 =>[
-    //         'title' => 'Intro to PHP',
-    //         'content' => 'This is a short intro t PHP',
-    //         'is_new' => false
-    //     ]
-    // ];
+    
+    public function __construct(){
+        $this->middleware('auth')->only(['create', 'store', 'edit', 'update', 'destroy']);
+    }
+    
 
     /**
      * Display a listing of the resource.
