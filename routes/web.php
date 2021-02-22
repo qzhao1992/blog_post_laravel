@@ -16,20 +16,23 @@ use App\Http\Controllers\PostsController;
 |
 */
 
-Route::get('/', [HomeController::class, 'home'])->middleware(['auth'])
+Route::get('/', [HomeController::class, 'home'])
     ->name('home.index');
-Route::get('/contact', [HomeController::class, 'contact'])->middleware(['auth'])
+Route::get('/contact', [HomeController::class, 'contact'])
     ->name('home.contact');
+
+    Route::get('/home', [HomeController::class, 'home'])
+    ->name('home.index');
 // Route::get('/single', AboutController::class);
 
-Route::resource('posts', PostsController::class)->middleware(['auth']);
+Route::resource('posts', PostsController::class);
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
